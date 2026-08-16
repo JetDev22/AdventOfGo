@@ -1,22 +1,13 @@
 package main
 
 import (
+	"AdventOfGo/helper"
 	"fmt"
-	"log"
-	"os"
 )
-
-func getPuzzle(day string) string {
-	content, err := os.ReadFile(day)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return string(content)
-}
 
 func firstPart() string {
 	level := 0
-	puzzle := getPuzzle("day1.txt")
+	puzzle := helper.GetPuzzle("day1.txt")
 	for _, char := range puzzle {
 		if char == '(' {
 			level++
@@ -30,7 +21,7 @@ func firstPart() string {
 func secondPart() string {
 	level := 0
 	firstBase := 0
-	puzzle := getPuzzle("day1.txt")
+	puzzle := helper.GetPuzzle("day1.txt")
 	for i, char := range puzzle {
 		if char == '(' {
 			level++
