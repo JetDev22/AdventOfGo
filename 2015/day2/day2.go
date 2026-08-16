@@ -8,9 +8,10 @@ import (
 	"strings"
 )
 
-func firstPart() float64 {
+func main() {
 	// lwh formula = 2*l*w + 2*w*h + 2*h*l
 	total := 0.0
+	ribbon := 0.0
 	puzzle := helper.GetPuzzle("day2.txt")
 	seperated := strings.Split(puzzle, "\n")
 	for _, single := range seperated {
@@ -20,15 +21,14 @@ func firstPart() float64 {
 		h, _ := strconv.ParseFloat(present[2], 64)
 		sides := []float64{l, w, h}
 		slices.Sort(sides)
+		// Part 1
 		sideA := 2 * l * w
 		sideB := 2 * w * h
 		sideC := 2 * h * l
 		total += sideA + sideB + sideC + (sides[0] * sides[1])
+		// Part 2
+		ribbon += sides[0] + sides[0] + sides[1] + sides[1] + (sides[0] * sides[1] * sides[2])
 	}
-	return total
-}
-
-func main() {
-	fmt.Println(firstPart())
-	//fmt.Println(secondPart())
+	fmt.Printf("Solution for Part 1 = %.f\n", total)
+	fmt.Printf("Solution for Part 2 = %.f\n", ribbon)
 }
